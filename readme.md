@@ -1,4 +1,4 @@
-# DNA Matchinig using Trie Data Structure
+# DNA Matching using Trie Data Structure
 
 This project implements a trie data structure in the C programming language, along with a static library that encapsulates the trie functionality. Tries are tree-like structures that are particularly efficient for storing and searching associative data, such as strings. The project also includes an application showcasing the use of the trie data structure for DNA sequence matching.
 
