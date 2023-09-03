@@ -7,7 +7,7 @@ Node *createNode()
     for (int i = 0; i < 26; i++)
     {
         newNode->links[i] = NULL;
-    }
+        }
     newNode->flag = 0; // Initialize 'flag' as 0 (false)
     return newNode;
 }
