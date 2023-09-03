@@ -14,5 +14,6 @@ Trie *createTrie();
 void insert(Trie *trie, const char *word);
 int search(Trie *trie, const char *word);
 int startsWith(Trie *trie, const char *prefix);
+void searchWithPrefix(Trie *trie, const char *prefix);
 
 #endif /* TRIE_H */
