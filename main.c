@@ -52,6 +52,7 @@ void get_DNA_from_database(Trie *trie)
 
 void remove_DNA_from_database(const char *sequence)
 {
+
     FILE *file = fopen("dna_database.txt", "r");
     FILE *tempFile = fopen("temp.txt", "w");
 
@@ -86,21 +87,26 @@ void remove_DNA_from_database(const char *sequence)
     fclose(tempFile);
 
     // Remove the original file and rename the temp file
-    if (remove("dna_database.txt") == 0)
-    {
-        if (rename("temp.txt", "dna_database.txt") == 0)
-        {
-            printf("DNA '%s' removed from the database.\n", sequence);
-        }
-        else
-        {
-            perror("Error renaming temp.txt to dna_database.txt");
-        }
-    }
-    else
-    {
-        perror("Error removing dna_database.txt");
-    }
+
+    // if (remove("dna_database.txt") == 0)
+    // {
+    //     if (rename("temp.txt", "dna_database.txt") == 0)
+    //     {
+    //         printf("DNA '%s' removed from the database.\n", sequence);
+    //     }
+    //     else
+    //     {
+    //         perror("Error renaming temp.txt to dna_database.txt");
+    //     }
+    // }
+    // else
+    // {
+    //     perror("Error removing dna_database.txt");
+    // }
+
+    rename("temp.txt", "dna_database.txt");
+    const char *file_path = "./dna_database.txt";
+    remove(file_path);
 }
 
 int main()
@@ -109,7 +115,7 @@ int main()
     printf("\nWELCOME TO THE DNA TRIE MATCHER\n");
     while (1)
     {
-        printf("\n Select the operation\n\n 1: Add a DNA sequence \n\n 2: Remove a DNA sequence \n\n 3: Search a DNA sequence \n\n 4: Search with prefix \n\n 5: Starts with prefix \n\n 0: Exit the program\n\n");
+        printf("\n Select the operation\n\n 1: Add a DNA sequence  \n\n 2: Search a DNA sequence \n\n 3: Search with prefix \n\n 4: Starts with prefix \n\n 0: Exit the program\n\n");
         int num;
         scanf("%d", &num);
         getchar();
@@ -130,6 +136,12 @@ int main()
                 printf("\n Enter a DNA sequence to add (or enter 0 to exit) ");
                 fgets(input, sizeof(input), stdin);
 
+                if (input[0] > '0' && input[0] <= '9')
+                {
+                    printf("\nEnter the valid String \n ");
+                    continue;
+                }
+
                 // Remove the newline character at the end of the input
                 input[strcspn(input, "\n")] = '\0';
 
@@ -145,25 +157,58 @@ int main()
                 }
             }
             break;
+            // case 2:
+
+            //     while (1)
+            //     {
+            //         printf("\n Enter a DNA sequence to remove (or enter 0 to exit)");
+            //         fgets(input, sizeof(input), stdin);
+
+            //         if (input[0] > '0' && input[0] <= '9')
+            //         {
+            //             printf(" \nEnter the valid String \n");
+            //             continue;
+            //         }
+            //         input[strcspn(input, "\n")] = '\0';
+
+            //         if (strcmp(input, "0") == 0)
+            //         {
+            //             break;
+            //         }
+            //         // fgets(input, sizeof(input), stdin);
+
+            //         char temp[26];
+            //         int check = -1;
+            //         FILE *file = fopen("dna_database.txt", "r");
+            //         while (fgets(temp, sizeof(temp) / sizeof(char), file))
+            //         {
+            //             // Remove the newline character from temp (read from file)
+            //             temp[strcspn(temp, "\n")] = '\0';
+
+            //             // Remove the newline character from input (user input)
+
+            //             // printf("%s - >   %s\n", temp, input);
+
+            //             if (strcmp(temp, input) == 0)
+            //             {
+            //                 check = 0;
+            //                 break;
+            //             }
+            //         }
+            //         if (check == -1)
+            //         {
+            //             printf("DNA not availaible ");
+            //         }
+            //         else
+            //         {
+
+            //             remove_DNA_from_database(input);
+            //         }
+            //     }
+            //     trie = createTrie();
+            //     break;
+
         case 2:
-
-            while (1)
-            {
-                printf("\n Enter a DNA sequence to remove (or enter 0 to exit)");
-                fgets(input, sizeof(input), stdin);
-                input[strcspn(input, "\n")] = '\0';
-
-                if (strcmp(input, "0") == 0)
-                {
-                    break;
-                }
-                // fgets(input, sizeof(input), stdin);
-                remove_DNA_from_database(input);
-            }
-            trie = createTrie();
-            break;
-
-        case 3:
 
             get_DNA_from_database(trie);
 
@@ -171,6 +216,12 @@ int main()
             {
                 printf("\nEnter a DNA sequence to search (or enter 0 to exit)  ");
                 fgets(input, sizeof(input), stdin);
+
+                if (input[0] > '0' && input[0] <= '9')
+                {
+                    printf(" \nEnter the valid String \n");
+                    continue;
+                }
 
                 // Remove the newline character at the end of the input
                 input[strcspn(input, "\n")] = '\0';
@@ -193,13 +244,19 @@ int main()
                 }
             }
             break;
-        case 4:
+        case 3:
 
             get_DNA_from_database(trie);
             while (1)
             {
                 printf("\nEnter a prefix to search with (or enter 0 to exit)  ");
                 fgets(input, sizeof(input), stdin);
+
+                if (input[0] > '0' && input[0] <= '9')
+                {
+                    printf(" \nEnter the valid String \n");
+                    continue;
+                }
 
                 // Remove the newline character at the end of the input
                 input[strcspn(input, "\n")] = '\0';
@@ -215,7 +272,7 @@ int main()
             }
             break;
 
-        case 5:
+        case 4:
 
             get_DNA_from_database(trie);
 
@@ -224,6 +281,13 @@ int main()
 
                 printf("\nEnter a prefix to start with (or enter 0 to exit)  ");
                 fgets(input, sizeof(input), stdin);
+                int num = 0;
+                // printf("%c", input[0]);
+                if (input[0] > '0' && input[0] <= '9')
+                {
+                    printf(" \nEnter the valid String \n");
+                    continue;
+                }
 
                 // Remove the newline character at the end of the input
                 input[strcspn(input, "\n")] = '\0';
@@ -237,14 +301,17 @@ int main()
                     int get = startsWith(trie, input);
                     if (get == 0)
                     {
-                        printf("no DNA sequence with the prefix %s \n", input);
+                        printf("no DNA sequence that starts with the prefix %s \n", input);
                     }
                     else
                     {
-                        printf("yes there is a DNA sequence with prefix %s \n", input);
+                        printf("yes there is a DNA sequence starts  with prefix %s \n", input);
                     }
                 }
             }
+            break;
+        default:
+            printf("\nEnter the valid string \n");
             break;
         }
     }
