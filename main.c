@@ -86,25 +86,7 @@ void remove_DNA_from_database(const char *sequence)
     fclose(file);
     fclose(tempFile);
 
-    // Remove the original file and rename the temp file
-
-    // if (remove("dna_database.txt") == 0)
-    // {
-    //     if (rename("temp.txt", "dna_database.txt") == 0)
-    //     {
-    //         printf("DNA '%s' removed from the database.\n", sequence);
-    //     }
-    //     else
-    //     {
-    //         perror("Error renaming temp.txt to dna_database.txt");
-    //     }
-    // }
-    // else
-    // {
-    //     perror("Error removing dna_database.txt");
-    // }
-
-    rename("temp.txt", "dna_database.txt");
+        rename("temp.txt", "dna_database.txt");
     const char *file_path = "./dna_database.txt";
     remove(file_path);
 }
@@ -157,57 +139,6 @@ int main()
                 }
             }
             break;
-            // case 2:
-
-            //     while (1)
-            //     {
-            //         printf("\n Enter a DNA sequence to remove (or enter 0 to exit)");
-            //         fgets(input, sizeof(input), stdin);
-
-            //         if (input[0] > '0' && input[0] <= '9')
-            //         {
-            //             printf(" \nEnter the valid String \n");
-            //             continue;
-            //         }
-            //         input[strcspn(input, "\n")] = '\0';
-
-            //         if (strcmp(input, "0") == 0)
-            //         {
-            //             break;
-            //         }
-            //         // fgets(input, sizeof(input), stdin);
-
-            //         char temp[26];
-            //         int check = -1;
-            //         FILE *file = fopen("dna_database.txt", "r");
-            //         while (fgets(temp, sizeof(temp) / sizeof(char), file))
-            //         {
-            //             // Remove the newline character from temp (read from file)
-            //             temp[strcspn(temp, "\n")] = '\0';
-
-            //             // Remove the newline character from input (user input)
-
-            //             // printf("%s - >   %s\n", temp, input);
-
-            //             if (strcmp(temp, input) == 0)
-            //             {
-            //                 check = 0;
-            //                 break;
-            //             }
-            //         }
-            //         if (check == -1)
-            //         {
-            //             printf("DNA not availaible ");
-            //         }
-            //         else
-            //         {
-
-            //             remove_DNA_from_database(input);
-            //         }
-            //     }
-            //     trie = createTrie();
-            //     break;
-
         case 2:
 
             get_DNA_from_database(trie);
