@@ -15,7 +15,7 @@ void add_DNA_to_database(char *sequence)
     // Append the DNA sequence to the file using fputs
     if (fputs(sequence, file) == EOF)
     {
-        perror("Error appending sequence to the file");
+        perror("Error in appending sequence to the file");
     }
 
     // Append a newline character to start a new line
