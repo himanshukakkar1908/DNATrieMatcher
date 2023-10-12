@@ -29,7 +29,7 @@ void put(Node *node, char ch, Node *newNode)
 
 void setEnd(Node *node)
 {
-    node->flag = 1; // Set 'flag' as 1 (true)
+    node->flag = 1; // Set the 'flag' value as 1 (true)
 }
 
 int isEnd(Node *node)
