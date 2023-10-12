@@ -185,7 +185,7 @@ int main()
 
                 if (input[0] > '0' && input[0] <= '9')
                 {
-                    printf(" \nEnter the valid String \n");
+                    printf(" \nEnter the valid String value\n");
                     continue;
                 }
 
