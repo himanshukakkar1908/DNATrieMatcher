@@ -8,7 +8,7 @@ Node *createNode()
     {
         newNode->links[i] = NULL;
         }
-    newNode->flag = 0; // Initialize 'flag' as 0 (false)
+    newNode->flag = 0; // Initialize 'flag'    value   as 0 (false)
     return newNode;
 }
 
