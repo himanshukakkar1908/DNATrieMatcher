@@ -2,7 +2,7 @@
 #define NODE_H
 
 typedef struct Node Node;
-
+//Structure of node
 struct Node
 {
     Node *links[26];
